@@ -64,6 +64,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Queue Ingestion
+    |--------------------------------------------------------------------------
+    |
+    | When true, the ingest endpoint dispatches IngestDocumentJob to your queue
+    | (run a worker to process it). When false, documents are ingested inline
+    | during the request, which is simplest for demos and small documents.
+    |
+    */
+
+    'queue_ingestion' => (bool) env('RAG_QUEUE_INGESTION', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Retrieval
     |--------------------------------------------------------------------------
     |
