@@ -5,8 +5,11 @@ namespace RagStarter;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use RagStarter\Contracts\ChatDriver;
 use RagStarter\Contracts\EmbeddingDriver;
+use RagStarter\Drivers\FakeChatDriver;
 use RagStarter\Drivers\FakeEmbeddingDriver;
+use RagStarter\Drivers\OpenAiChatDriver;
 use RagStarter\Drivers\OpenAiEmbeddingDriver;
 use RagStarter\Ingestion\DocumentChunker;
 
@@ -20,6 +23,8 @@ class RagServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/rag.php', 'rag');
 
         $this->app->singleton(EmbeddingDriver::class, fn (Application $app) => $this->makeEmbeddingDriver($app));
+
+        $this->app->singleton(ChatDriver::class, fn (Application $app) => $this->makeChatDriver($app));
 
         $this->app->bind(DocumentChunker::class, fn (Application $app) => new DocumentChunker(
             (int) $app['config']->get('rag.chunk_size', 1000),
@@ -53,6 +58,21 @@ class RagServiceProvider extends ServiceProvider
                 baseUri: $config->get('rag.openai.base_uri'),
                 model: $config->get('rag.openai.embedding_model'),
                 dimensions: $dimensions,
+                timeout: (int) $config->get('rag.openai.timeout', 30),
+            ),
+        };
+    }
+
+    private function makeChatDriver(Application $app): ChatDriver
+    {
+        $config = $app['config'];
+
+        return match ($config->get('rag.chat_driver')) {
+            'fake' => new FakeChatDriver,
+            default => new OpenAiChatDriver(
+                apiKey: $config->get('rag.openai.api_key'),
+                baseUri: $config->get('rag.openai.base_uri'),
+                model: $config->get('rag.openai.chat_model'),
                 timeout: (int) $config->get('rag.openai.timeout', 30),
             ),
         };
