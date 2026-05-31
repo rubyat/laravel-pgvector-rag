@@ -4,10 +4,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-This is the **Laravel Vue Starter Kit** scaffold (Laravel 13, Vue 3, Inertia 2). Despite the
-`laravel-pgvector-rag` directory name, **no pgvector or RAG code exists yet** — the repo is
-currently just the auth/settings starter. New RAG functionality (vector storage, embeddings,
-retrieval) has to be built from scratch.
+A **Laravel Vue Starter Kit** (Laravel 13, Vue 3, Inertia 2) that also ships a pgvector-backed
+**RAG starter kit**. The reusable RAG code lives in a local path package at
+`packages/laravel-rag` (namespace `RagStarter\`, wired via a `path` repository in the root
+`composer.json`). The app database is **PostgreSQL** (the `pgvector` extension is required).
+
+## RAG architecture (`packages/laravel-rag`)
+
+Pipeline: ingest → chunk → embed → store in pgvector → retrieve top-k → ground an LLM answer.
+
+- `Ingestion\DocumentChunker` (size/overlap), `DocumentIngestor` (chunk→embed→store),
+  `IngestDocumentJob` (queueable).
+- `Retrieval\VectorRetriever` — cosine top-k via `embedding <=> ?::vector`, HNSW index.
+- `Rag\RagPipeline` — retrieve → grounded prompt → `ChatDriver`, returns `answer` + `citations`.
+- `Contracts\EmbeddingDriver` / `ChatDriver`, resolved from `config('rag.*_driver')` in
+  `RagServiceProvider`. `OpenAi*` drivers hit the HTTP API; **`Fake*` drivers are deterministic
+  and are what the test suite + CI use** (`RAG_EMBEDDING_DRIVER=fake`, no network/keys).
+- `Models\Document` — one row per chunk; `embedding` uses `Casts\VectorCast` (PHP array ↔
+  pgvector literal). Table/dimension are config-driven (`vector(1536)` for `text-embedding-3-small`).
+- HTTP: `POST api/rag/ingest`, `POST api/rag/ask` (registered by the provider). Vue demo at the
+  authed `/rag` route (`resources/js/pages/Rag.vue` + `composables/useRag.ts`).
+- Ingestion is **synchronous by default**; set `RAG_QUEUE_INGESTION=true` (+ a queue worker) to
+  dispatch the job instead.
+
+When changing the embedding model, update `RAG_DIMENSIONS` **and** add a migration — the pgvector
+column is fixed-length. Index is HNSW, not ivfflat (ivfflat returns fewer rows than `LIMIT` on
+small tables).
 
 ## Commands
 
@@ -28,8 +50,10 @@ npm run lint          # eslint --fix
 npm run format        # prettier --write resources/
 ```
 
-Tests run on in-memory SQLite (see `phpunit.xml`); the dev DB defaults to `database/database.sqlite`.
-Tests are written with **Pest 4**, not raw PHPUnit.
+Tests run against **PostgreSQL + pgvector** (connection in `phpunit.xml`, a separate
+`*-testing` database) using the deterministic `fake` RAG drivers. Feature tests use
+`RefreshDatabase` (enabled in `tests/Pest.php`), so the test database is migrated fresh —
+it needs pgvector available. Tests are written with **Pest 4**, not raw PHPUnit.
 
 ## Architecture
 
