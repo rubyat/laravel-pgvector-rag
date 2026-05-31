@@ -1,0 +1,32 @@
+{
+    "name": "rubyat/laravel-rag",
+    "description": "Add semantic search and Retrieval-Augmented Generation (RAG) to any Laravel app with PostgreSQL + pgvector.",
+    "version": "0.1.0",
+    "keywords": ["laravel", "rag", "pgvector", "embeddings", "semantic-search", "openai", "vector-search"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RagStarter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RagStarter\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RagStarter\\RagServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
