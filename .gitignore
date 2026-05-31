@@ -27,3 +27,7 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Local verification artifacts
+/.playwright-mcp
+/rag-page-working.png
