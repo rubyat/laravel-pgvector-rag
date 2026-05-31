@@ -30,9 +30,11 @@ return new class extends Migration
         });
 
         if ($driver === 'pgsql') {
-            // pgvector column + approximate-nearest-neighbour index (cosine).
+            // pgvector column + HNSW cosine index. HNSW keeps high recall at
+            // any table size, unlike ivfflat which needs many rows (and tuned
+            // probes) to avoid returning fewer results than requested.
             DB::statement("ALTER TABLE {$table} ADD COLUMN embedding vector({$dimensions})");
-            DB::statement("CREATE INDEX {$table}_embedding_ivfflat_idx ON {$table} USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100)");
+            DB::statement("CREATE INDEX {$table}_embedding_hnsw_idx ON {$table} USING hnsw (embedding vector_cosine_ops)");
         } else {
             // Fallback for non-pgvector drivers: store the raw vector as text so
             // the schema still migrates. Similarity search requires PostgreSQL.
