@@ -75,6 +75,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Routes
+    |--------------------------------------------------------------------------
+    |
+    | The package registers POST {prefix}/ingest and POST {prefix}/ask. Set
+    | "register_routes" to false to wire your own routes against the services.
+    |
+    */
+
+    'register_routes' => env('RAG_REGISTER_ROUTES', true),
+
+    'route_prefix' => env('RAG_ROUTE_PREFIX', 'api/rag'),
+
+    'middleware' => ['api'],
+
+    /*
+    |--------------------------------------------------------------------------
     | Database
     |--------------------------------------------------------------------------
     |
