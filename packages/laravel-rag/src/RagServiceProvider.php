@@ -3,6 +3,7 @@
 namespace RagStarter;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use RagStarter\Contracts\EmbeddingDriver;
 use RagStarter\Drivers\FakeEmbeddingDriver;
@@ -24,6 +25,20 @@ class RagServiceProvider extends ServiceProvider
             (int) $app['config']->get('rag.chunk_size', 1000),
             (int) $app['config']->get('rag.chunk_overlap', 200),
         ));
+    }
+
+    private function registerRoutes(): void
+    {
+        if (! config('rag.register_routes', true)) {
+            return;
+        }
+
+        Route::group([
+            'prefix' => config('rag.route_prefix', 'api/rag'),
+            'middleware' => config('rag.middleware', ['api']),
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        });
     }
 
     private function makeEmbeddingDriver(Application $app): EmbeddingDriver
@@ -49,6 +64,7 @@ class RagServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->registerRoutes();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
