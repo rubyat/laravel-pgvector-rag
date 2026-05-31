@@ -2,7 +2,12 @@
 
 namespace RagStarter;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use RagStarter\Contracts\EmbeddingDriver;
+use RagStarter\Drivers\FakeEmbeddingDriver;
+use RagStarter\Drivers\OpenAiEmbeddingDriver;
+use RagStarter\Ingestion\DocumentChunker;
 
 class RagServiceProvider extends ServiceProvider
 {
@@ -12,6 +17,30 @@ class RagServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/rag.php', 'rag');
+
+        $this->app->singleton(EmbeddingDriver::class, fn (Application $app) => $this->makeEmbeddingDriver($app));
+
+        $this->app->bind(DocumentChunker::class, fn (Application $app) => new DocumentChunker(
+            (int) $app['config']->get('rag.chunk_size', 1000),
+            (int) $app['config']->get('rag.chunk_overlap', 200),
+        ));
+    }
+
+    private function makeEmbeddingDriver(Application $app): EmbeddingDriver
+    {
+        $config = $app['config'];
+        $dimensions = (int) $config->get('rag.dimensions', 1536);
+
+        return match ($config->get('rag.embedding_driver')) {
+            'fake' => new FakeEmbeddingDriver($dimensions),
+            default => new OpenAiEmbeddingDriver(
+                apiKey: $config->get('rag.openai.api_key'),
+                baseUri: $config->get('rag.openai.base_uri'),
+                model: $config->get('rag.openai.embedding_model'),
+                dimensions: $dimensions,
+                timeout: (int) $config->get('rag.openai.timeout', 30),
+            ),
+        };
     }
 
     /**
