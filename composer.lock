@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fbace84fb773c417150454c4e09ddfb3",
+    "content-hash": "a9e7b43f25fe84cce29d97054d0473d5",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4117,6 +4117,56 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.2"
             },
             "time": "2025-12-14T04:43:48+00:00"
+        },
+        {
+            "name": "rubyat/laravel-rag",
+            "version": "0.1.0",
+            "dist": {
+                "type": "path",
+                "url": "packages/laravel-rag",
+                "reference": "45de853de5a0513b876dd892f3b993e919e30b0d"
+            },
+            "require": {
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": "^8.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RagStarter\\RagServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RagStarter\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "RagStarter\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Add semantic search and Retrieval-Augmented Generation (RAG) to any Laravel app with PostgreSQL + pgvector.",
+            "keywords": [
+                "embeddings",
+                "laravel",
+                "openai",
+                "pgvector",
+                "rag",
+                "semantic-search",
+                "vector-search"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "spomky-labs/cbor-php",
