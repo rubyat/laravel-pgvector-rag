@@ -31,3 +31,5 @@ yarn-error.log
 # Local verification artifacts
 /.playwright-mcp
 /rag-page-working.png
+/rag-full-test.png
+*.local.png
