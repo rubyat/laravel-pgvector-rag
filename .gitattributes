@@ -9,3 +9,17 @@
 CHANGELOG.md export-ignore
 README.md export-ignore
 .github/workflows/browser-tests.yml export-ignore
+
+# Linguist language stats: this is a PHP/Laravel package showcase. The
+# Vue/Inertia frontend is laravel/vue-starter-kit + shadcn-vue boilerplate, so
+# it is marked vendored to keep the stats representative of the RAG package.
+# The frontend code actually authored for this project is re-included below.
+resources/js/** linguist-vendored
+resources/css/** linguist-vendored
+*.config.ts linguist-vendored
+*.config.js linguist-vendored
+components.json linguist-generated
+
+# Authored for this project — keep these counted.
+resources/js/pages/Rag.vue linguist-vendored=false
+resources/js/composables/useRag.ts linguist-vendored=false
