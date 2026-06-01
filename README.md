@@ -1,5 +1,9 @@
 # Laravel pgvector RAG Starter
 
+[![tests](https://github.com/rubyat/laravel-pgvector-rag/actions/workflows/tests.yml/badge.svg)](https://github.com/rubyat/laravel-pgvector-rag/actions/workflows/tests.yml)
+[![linter](https://github.com/rubyat/laravel-pgvector-rag/actions/workflows/lint.yml/badge.svg)](https://github.com/rubyat/laravel-pgvector-rag/actions/workflows/lint.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 > Add semantic search and Retrieval-Augmented Generation (RAG) to any Laravel app with PostgreSQL + pgvector.
 
 Ingest documents → they are chunked, embedded and stored in pgvector → ask questions and get answers grounded **only** in your own documents, with source citations.
