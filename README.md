@@ -163,6 +163,9 @@ php artisan test --filter=Rag    # just the RAG tests
 ./vendor/bin/pest tests/Unit     # unit tests only
 ```
 
+For a full step-by-step run & manual-testing walkthrough (UI + API, with expected
+inputs/outputs and diagrams), see [TESTING.md](TESTING.md).
+
 ## Roadmap
 
 - Additional embedding/chat drivers (Ollama, Anthropic).
