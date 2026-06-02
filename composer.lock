@@ -4124,7 +4124,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/laravel-rag",
-                "reference": "45de853de5a0513b876dd892f3b993e919e30b0d"
+                "reference": "4e306193cae8470f2221f3cf6d865a8da7835b29"
             },
             "require": {
                 "illuminate/contracts": "^11.0|^12.0|^13.0",
@@ -4136,18 +4136,18 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "RagStarter\\RagServiceProvider"
+                        "Rubyat\\LaravelRag\\RagServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "RagStarter\\": "src/"
+                    "Rubyat\\LaravelRag\\": "src/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "RagStarter\\Tests\\": "tests/"
+                    "Rubyat\\LaravelRag\\Tests\\": "tests/"
                 }
             },
             "license": [

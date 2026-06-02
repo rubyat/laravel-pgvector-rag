@@ -1,15 +1,15 @@
 <?php
 
-namespace RagStarter\Http\Controllers;
+namespace Rubyat\LaravelRag\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
-use RagStarter\Http\Requests\AskRequest;
-use RagStarter\Http\Requests\IngestRequest;
-use RagStarter\Ingestion\DocumentChunker;
-use RagStarter\Ingestion\DocumentIngestor;
-use RagStarter\Ingestion\IngestDocumentJob;
-use RagStarter\Rag\RagPipeline;
+use Rubyat\LaravelRag\Http\Requests\AskRequest;
+use Rubyat\LaravelRag\Http\Requests\IngestRequest;
+use Rubyat\LaravelRag\Ingestion\DocumentChunker;
+use Rubyat\LaravelRag\Ingestion\DocumentIngestor;
+use Rubyat\LaravelRag\Ingestion\IngestDocumentJob;
+use Rubyat\LaravelRag\Rag\RagPipeline;
 
 class RagController extends Controller
 {

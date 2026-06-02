@@ -1,8 +1,8 @@
 <?php
 
-namespace RagStarter\Drivers;
+namespace Rubyat\LaravelRag\Drivers;
 
-use RagStarter\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
 
 /**
  * A deterministic, network-free embedding driver for local use and tests.

@@ -1,8 +1,8 @@
 <?php
 
-use RagStarter\Contracts\EmbeddingDriver;
-use RagStarter\Models\Document;
-use RagStarter\Rag\RagPipeline;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Models\Document;
+use Rubyat\LaravelRag\Rag\RagPipeline;
 
 function seedChunk(string $source, int $index, string $content): void
 {

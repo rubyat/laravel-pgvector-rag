@@ -1,8 +1,8 @@
 <?php
 
-use RagStarter\Contracts\EmbeddingDriver;
-use RagStarter\Models\Document;
-use RagStarter\Retrieval\VectorRetriever;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Models\Document;
+use Rubyat\LaravelRag\Retrieval\VectorRetriever;
 
 function seedDocument(string $source, string $content): void
 {

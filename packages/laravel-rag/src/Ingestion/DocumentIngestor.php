@@ -1,10 +1,10 @@
 <?php
 
-namespace RagStarter\Ingestion;
+namespace Rubyat\LaravelRag\Ingestion;
 
 use Illuminate\Support\Collection;
-use RagStarter\Contracts\EmbeddingDriver;
-use RagStarter\Models\Document;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Models\Document;
 
 /**
  * Turns a raw source document into stored, embedded chunks.

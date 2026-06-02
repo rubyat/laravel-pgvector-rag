@@ -1,9 +1,9 @@
 <?php
 
-namespace RagStarter\Rag;
+namespace Rubyat\LaravelRag\Rag;
 
-use RagStarter\Contracts\ChatDriver;
-use RagStarter\Retrieval\VectorRetriever;
+use Rubyat\LaravelRag\Contracts\ChatDriver;
+use Rubyat\LaravelRag\Retrieval\VectorRetriever;
 
 /**
  * The end-to-end Retrieval-Augmented Generation flow:

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A **Laravel Vue Starter Kit** (Laravel 13, Vue 3, Inertia 2) that also ships a pgvector-backed
 **RAG starter kit**. The reusable RAG code lives in a local path package at
-`packages/laravel-rag` (namespace `RagStarter\`, wired via a `path` repository in the root
+`packages/laravel-rag` (namespace `Rubyat\LaravelRag\`, wired via a `path` repository in the root
 `composer.json`). The app database is **PostgreSQL** (the `pgvector` extension is required).
 
 ## RAG architecture (`packages/laravel-rag`)

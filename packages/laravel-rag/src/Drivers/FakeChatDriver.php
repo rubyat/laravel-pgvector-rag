@@ -1,9 +1,9 @@
 <?php
 
-namespace RagStarter\Drivers;
+namespace Rubyat\LaravelRag\Drivers;
 
 use Illuminate\Support\Str;
-use RagStarter\Contracts\ChatDriver;
+use Rubyat\LaravelRag\Contracts\ChatDriver;
 
 /**
  * A deterministic, network-free chat driver for local use and tests. It echoes

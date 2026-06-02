@@ -1,6 +1,6 @@
 <?php
 
-use RagStarter\Models\Document;
+use Rubyat\LaravelRag\Models\Document;
 
 it('ingests a document into multiple embedded chunks', function () {
     $content = str_repeat('Postgres pgvector enables semantic search. ', 200);
