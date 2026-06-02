@@ -1,9 +1,9 @@
 <?php
 
-namespace RagStarter\Drivers;
+namespace Rubyat\LaravelRag\Drivers;
 
 use Illuminate\Support\Facades\Http;
-use RagStarter\Contracts\ChatDriver;
+use Rubyat\LaravelRag\Contracts\ChatDriver;
 use RuntimeException;
 
 class OpenAiChatDriver implements ChatDriver

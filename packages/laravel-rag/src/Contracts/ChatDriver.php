@@ -1,6 +1,6 @@
 <?php
 
-namespace RagStarter\Contracts;
+namespace Rubyat\LaravelRag\Contracts;
 
 interface ChatDriver
 {

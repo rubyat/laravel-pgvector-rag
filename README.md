@@ -127,8 +127,8 @@ Log in and open `/rag` to ingest documents and ask questions in the browser. Ans
 ### In code
 
 ```php
-use RagStarter\Ingestion\DocumentIngestor;
-use RagStarter\Rag\RagPipeline;
+use Rubyat\LaravelRag\Ingestion\DocumentIngestor;
+use Rubyat\LaravelRag\Rag\RagPipeline;
 
 app(DocumentIngestor::class)->ingest('handbook.md', $longText);
 

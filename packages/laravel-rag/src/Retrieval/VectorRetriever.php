@@ -1,10 +1,10 @@
 <?php
 
-namespace RagStarter\Retrieval;
+namespace Rubyat\LaravelRag\Retrieval;
 
 use Illuminate\Support\Collection;
-use RagStarter\Contracts\EmbeddingDriver;
-use RagStarter\Models\Document;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Models\Document;
 
 /**
  * Finds the chunks most similar to a query using pgvector cosine distance.

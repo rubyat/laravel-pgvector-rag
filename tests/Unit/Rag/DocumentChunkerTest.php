@@ -1,6 +1,6 @@
 <?php
 
-use RagStarter\Ingestion\DocumentChunker;
+use Rubyat\LaravelRag\Ingestion\DocumentChunker;
 
 it('returns an empty array for blank input', function () {
     expect((new DocumentChunker(100, 20))->chunk('   '))->toBe([]);

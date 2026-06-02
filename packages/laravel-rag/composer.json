@@ -12,18 +12,18 @@
     },
     "autoload": {
         "psr-4": {
-            "RagStarter\\": "src/"
+            "Rubyat\\LaravelRag\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RagStarter\\Tests\\": "tests/"
+            "Rubyat\\LaravelRag\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "RagStarter\\RagServiceProvider"
+                "Rubyat\\LaravelRag\\RagServiceProvider"
             ]
         }
     },

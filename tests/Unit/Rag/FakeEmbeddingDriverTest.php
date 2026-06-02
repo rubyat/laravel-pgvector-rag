@@ -1,6 +1,6 @@
 <?php
 
-use RagStarter\Drivers\FakeEmbeddingDriver;
+use Rubyat\LaravelRag\Drivers\FakeEmbeddingDriver;
 
 function cosine(array $a, array $b): float
 {

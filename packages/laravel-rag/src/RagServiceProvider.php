@@ -1,17 +1,17 @@
 <?php
 
-namespace RagStarter;
+namespace Rubyat\LaravelRag;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use RagStarter\Contracts\ChatDriver;
-use RagStarter\Contracts\EmbeddingDriver;
-use RagStarter\Drivers\FakeChatDriver;
-use RagStarter\Drivers\FakeEmbeddingDriver;
-use RagStarter\Drivers\OpenAiChatDriver;
-use RagStarter\Drivers\OpenAiEmbeddingDriver;
-use RagStarter\Ingestion\DocumentChunker;
+use Rubyat\LaravelRag\Contracts\ChatDriver;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Drivers\FakeChatDriver;
+use Rubyat\LaravelRag\Drivers\FakeEmbeddingDriver;
+use Rubyat\LaravelRag\Drivers\OpenAiChatDriver;
+use Rubyat\LaravelRag\Drivers\OpenAiEmbeddingDriver;
+use Rubyat\LaravelRag\Ingestion\DocumentChunker;
 
 class RagServiceProvider extends ServiceProvider
 {

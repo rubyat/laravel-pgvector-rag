@@ -1,6 +1,6 @@
 <?php
 
-namespace RagStarter\Ingestion;
+namespace Rubyat\LaravelRag\Ingestion;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

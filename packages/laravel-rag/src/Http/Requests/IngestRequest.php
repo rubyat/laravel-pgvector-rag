@@ -1,6 +1,6 @@
 <?php
 
-namespace RagStarter\Http\Requests;
+namespace Rubyat\LaravelRag\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -13,12 +13,12 @@ php artisan migrate
 
 ## What it provides
 
-- `RagStarter\Ingestion\DocumentChunker` — character-bounded, overlapping chunking.
-- `RagStarter\Ingestion\DocumentIngestor` — chunk → embed → store as `Document` rows.
-- `RagStarter\Ingestion\IngestDocumentJob` — queueable ingestion.
-- `RagStarter\Retrieval\VectorRetriever` — cosine top-k search via pgvector (HNSW).
-- `RagStarter\Rag\RagPipeline` — retrieve → ground → answer, with citations.
-- `RagStarter\Contracts\EmbeddingDriver` / `ChatDriver` — swap providers.
+- `Rubyat\LaravelRag\Ingestion\DocumentChunker` — character-bounded, overlapping chunking.
+- `Rubyat\LaravelRag\Ingestion\DocumentIngestor` — chunk → embed → store as `Document` rows.
+- `Rubyat\LaravelRag\Ingestion\IngestDocumentJob` — queueable ingestion.
+- `Rubyat\LaravelRag\Retrieval\VectorRetriever` — cosine top-k search via pgvector (HNSW).
+- `Rubyat\LaravelRag\Rag\RagPipeline` — retrieve → ground → answer, with citations.
+- `Rubyat\LaravelRag\Contracts\EmbeddingDriver` / `ChatDriver` — swap providers.
   - Drivers: `OpenAi*` (HTTP) and deterministic `Fake*` for tests/offline.
 - HTTP routes: `POST {prefix}/ingest`, `POST {prefix}/ask` (default prefix `api/rag`).
 

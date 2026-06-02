@@ -1,9 +1,9 @@
 <?php
 
-namespace RagStarter\Drivers;
+namespace Rubyat\LaravelRag\Drivers;
 
 use Illuminate\Support\Facades\Http;
-use RagStarter\Contracts\EmbeddingDriver;
+use Rubyat\LaravelRag\Contracts\EmbeddingDriver;
 use RuntimeException;
 
 class OpenAiEmbeddingDriver implements EmbeddingDriver

@@ -1,6 +1,6 @@
 <?php
 
-namespace RagStarter\Casts;
+namespace Rubyat\LaravelRag\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;

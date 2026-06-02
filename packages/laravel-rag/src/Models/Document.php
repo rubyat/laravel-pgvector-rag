@@ -1,9 +1,9 @@
 <?php
 
-namespace RagStarter\Models;
+namespace Rubyat\LaravelRag\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use RagStarter\Casts\VectorCast;
+use Rubyat\LaravelRag\Casts\VectorCast;
 
 /**
  * A single embedded chunk of a source document.
